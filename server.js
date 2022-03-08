@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { Wit } = require('node-wit');
 const Pusher = require('pusher');
+
 const pusher = new Pusher({
     appId: process.env.PUSHER_APP_ID,
     key: process.env.PUSHER_APP_KEY,
@@ -77,7 +78,9 @@ const handleMessage = ({ entities }) => {
     });
 };
 
-
+app.get('/',(req,res) => {
+    res.status(200).send('Hey there from wit ai')
+})
 app.post('/chat', (req, res) => {
     const { message } = req.body;
 
